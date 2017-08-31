@@ -1,0 +1,151 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: todoServer
+schemes:
+  - http
+basePath: /api
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  '/todoModels/{id}':
+    get:
+      tags:
+        - todoModel
+      summary: 'Find a model instance by {{id}}'
+      operationId: todoModel.findOne
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todoModel'
+      deprecated: false
+    put:
+      tags:
+        - todoModel
+      summary: Put attributes for a model instance and persist it
+      operationId: todoModel.replace
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: true
+          schema:
+            $ref: '#/definitions/todoModel'
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todoModel'
+      deprecated: false
+    patch:
+      tags:
+        - todoModel
+      summary: Patch attributes for a model instance and persist it
+      operationId: todoModel.update
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: true
+          schema:
+            $ref: '#/definitions/todoModel'
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todoModel'
+      deprecated: false
+    delete:
+      tags:
+        - todoModel
+      summary: 'Delete a model instance by {{id}}'
+      operationId: todoModel.delete
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  /todoModels:
+    post:
+      tags:
+        - todoModel
+      summary: Create a new instance of the model and persist it
+      operationId: todoModel.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: true
+          schema:
+            $ref: '#/definitions/todoModel'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/todoModel'
+      deprecated: false
+    get:
+      tags:
+        - todoModel
+      summary: Find all instances of the model
+      operationId: todoModel.findAll
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/todoModel'
+      deprecated: false
+    delete:
+      tags:
+        - todoModel
+      summary: Delete all instances of the model
+      operationId: todoModel.deleteAll
+      responses:
+        '200':
+          description: Request was successful
+      deprecated: false
+definitions:
+  todoModel:
+    properties:
+      id:
+        type: string
+      uid:
+        type: string
+      taskName:
+        type: string
+    additionalProperties: false
+    required:
+      - uid
+      - taskName

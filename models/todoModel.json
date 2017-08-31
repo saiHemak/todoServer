@@ -1,0 +1,19 @@
+{
+  "name": "todoModel",
+  "plural": "todoModels",
+  "classname": "TodoModel",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true
+    },
+    "uid": {
+      "type": "string",
+      "required": true
+    },
+    "taskName": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
